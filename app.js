@@ -318,7 +318,7 @@ const d3Tableau = () => {
 		}
 
 		function handleMouseOver(node) {
-			var datevalue = new Date(node.Variant_Identified_Date);
+			var datevalue = new Date.parse(node.Variant_Identified_Date);
 			var htmlContent = "<div>";
 			htmlContent += "Variant: " + node.VARIANT + "<br>";
 			htmlContent +=
