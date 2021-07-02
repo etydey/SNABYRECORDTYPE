@@ -317,14 +317,22 @@ const d3Tableau = () => {
 			return color;
 		}
 
+		function recordType(node) {
+			var type;
+			if (node.RECORD_TYPE == "CI - Not Tested") type = "Not Tested";
+			if (node.RECORD_TYPE == "CI - Tested Negative") type = "Tested Negative";
+			if (node.RECORD_TYPE == "DI - VOC Positive") type = "VOC Positive";
+			if (node.RECORD_TYPE == "DI - Wild Type") type = "Wild Type";
+
+			return type;
+		}
+
 		function dateConvert(datetext) {
 			var months = {JAN:0,FEB:1,MAR:2,APR:3,MAY:4,JUN:5,
                 JUL:6,AUG:7,SEP:8,OCT:9,NOV:10,DEC:11};
 			var dd = datetext.slice(2,4);
 			var mmm = datetext.slice(4,7);
 			var yyyy = datetext.slice(7,11);
-			//var date = `${yyyy}-${months[mmm]}-${dd}`;
-			//return date;
 			return new Date(yyyy, months[mmm], dd);
 		}
 
@@ -336,7 +344,7 @@ const d3Tableau = () => {
 				"Identified Date: " + datevalue + "<br>";
 			htmlContent += "ID: " + node.ID + "<br>";
 			htmlContent += "Zone: " + node.Case_Zone + "<br>";
-			htmlContent += "Record Type: " + node.RECORD_TYPE + "<br>";
+			htmlContent += "Record Type: " + recordType(node) + "<br>";
 			htmlContent += "</div>";
 			tooltip.html(htmlContent);
 			return tooltip
