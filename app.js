@@ -323,7 +323,7 @@ const d3Tableau = () => {
 			var dd = datetext.slice(0,2);
 			var mmm = datetext.slice(2,3);
 			var yyyy = datetext.slice(5,4);
-			var date = `${yyyy}-${months[mmm.toLowerCase()]}-${dd}`;
+			var date = `${dd}-${mmm}-${yyyy}`;
 			return date;
 			//return new Date(date);
 		}
