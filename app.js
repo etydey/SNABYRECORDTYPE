@@ -318,17 +318,18 @@ const d3Tableau = () => {
 		}
 
 		function dateConvert(datetext) {
-			var months = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,
-                jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
+			var months = {jan:01,feb:02,mar:03,apr:04,may:05,jun:06,
+                jul:07,aug:08,sep:09,oct:10,nov:11,dec:12};
 			var dd = datetext.slice(0,2);
 			var mmm = datetext.slice(2,3);
 			var yyyy = datetext.slice(5,4);
 			var date = `${yyyy}-${months[mmm.toLowerCase()]}-${dd}`;
-			return new Date(date);
+			return date;
+			//return new Date(date);
 		}
 
 		function handleMouseOver(node) {
-			var datevalue = dateConvert(node.Variant_Identified_Date).toDateString();
+			var datevalue = dateConvert(node.Variant_Identified_Date);
 			var htmlContent = "<div>";
 			htmlContent += "Variant: " + node.VARIANT + "<br>";
 			htmlContent +=
