@@ -318,10 +318,11 @@ const d3Tableau = () => {
 		}
 
 		function handleMouseOver(node) {
+			var datevalue = node.Variant_Identified_Date;
 			var htmlContent = "<div>";
 			htmlContent += "VARIANT: " + node.VARIANT + "<br>";
 			htmlContent +=
-				"Identified Date: " + node.Variant_Identified_Date + "<br>";
+				"Identified Date: " + datevalue.toDateString() + "<br>";
 			htmlContent += "ID: " + node.ID + "<br>";
 			htmlContent += "Zone: " + node.Case_Zone + "<br>";
 			htmlContent += "Recod Type: " + node.RECORD_TYPE + "<br>";
