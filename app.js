@@ -318,23 +318,24 @@ const d3Tableau = () => {
 		}
 
 		function dateConvert(datetext) {
-			var months = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,
-                jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+			var months = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,
+                jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
 			var dd = datetext.slice(0,2);
 			var mmm = datetext.slice(2,3);
 			var yyyy = datetext.slice(5,4);
-			return new Date(yyyy, months[mmm.toLowerCase()], dd);
+			var date = `${yyyy}-${months[mmm.toLowerCase()]}-${dd}`;
+			return new Date(date);
 		}
 
 		function handleMouseOver(node) {
-			var datevalue = dateConvert(node.Variant_Identified_Date);
+			var datevalue = dateConvert(node.Variant_Identified_Date).toDateString();
 			var htmlContent = "<div>";
 			htmlContent += "Variant: " + node.VARIANT + "<br>";
 			htmlContent +=
 				"Identified Date: " + datevalue + "<br>";
 			htmlContent += "ID: " + node.ID + "<br>";
 			htmlContent += "Zone: " + node.Case_Zone + "<br>";
-			htmlContent += "Recod Type: " + node.RECORD_TYPE + "<br>";
+			htmlContent += "Record Type: " + node.RECORD_TYPE + "<br>";
 			htmlContent += "</div>";
 			tooltip.html(htmlContent);
 			return tooltip
