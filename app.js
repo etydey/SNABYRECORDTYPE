@@ -318,14 +318,14 @@ const d3Tableau = () => {
 		}
 
 		function dateConvert(datetext) {
-			var months = {JAN:"01",FEB:"02",MAR:"03",APR:"04",MAY:"05",JUN:"06",
-                JUL:"07",AUG:"08",SEP:"09",OCT:"10",NOV:"11",DEC:"12"};
+			var months = {JAN:0,FEB:1,MAR:2,APR:3,MAY:4,JUN:5,
+                JUL:6,AUG:7,SEP:8,OCT:9,NOV:10,DEC:11};
 			var dd = datetext.slice(2,4);
 			var mmm = datetext.slice(4,7);
 			var yyyy = datetext.slice(7,11);
-			var date = `${yyyy}-${months[mmm]}-${dd}`;
-			return date;
-			//return new Date(date);
+			//var date = `${yyyy}-${months[mmm]}-${dd}`;
+			//return date;
+			return new Date(yyyy, months[mmm], dd);
 		}
 
 		function handleMouseOver(node) {
