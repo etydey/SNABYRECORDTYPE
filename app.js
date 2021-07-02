@@ -324,12 +324,12 @@ const d3Tableau = () => {
 			var mmm = datetext.slice(4,7);
 			var yyyy = datetext.slice(7,11);
 			var date = `${yyyy}-${months[mmm]}-${dd}`;
-			//return date;
-			return new Date(date);
+			return date;
+			//return new Date(date);
 		}
 
 		function handleMouseOver(node) {
-			var datevalue = dateConvert(node.Variant_Identified_Date).toDateString();
+			var datevalue = dateConvert(node.Variant_Identified_Date);
 			var htmlContent = "<div>";
 			htmlContent += "Variant: " + node.VARIANT + "<br>";
 			htmlContent +=
