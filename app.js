@@ -320,9 +320,9 @@ const d3Tableau = () => {
 		function dateConvert(datetext) {
 			var months = {jan:01,feb:02,mar:03,apr:04,may:05,jun:06,
                 jul:07,aug:08,sep:09,oct:10,nov:11,dec:12};
-			var dd = datetext.slice(0,2);
-			var mmm = datetext.slice(2,5);
-			var yyyy = datetext.slice(5,9);
+			var dd = datetext.slice(2,4);
+			var mmm = datetext.slice(4,7);
+			var yyyy = datetext.slice(7,11);
 			var date = `${dd}-${mmm}-${yyyy}`;
 			return date;
 			//return new Date(date);
