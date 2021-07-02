@@ -318,12 +318,12 @@ const d3Tableau = () => {
 		}
 
 		function dateConvert(datetext) {
-			var months = {jan:01,feb:02,mar:03,apr:04,may:05,jun:06,
-                jul:07,aug:08,sep:09,oct:10,nov:11,dec:12};
+			var months = {JAN:"01",FEB:"02",MAR:"03",APR:"04",MAY:"05",JUN:"06",
+                JUL:"07",AUG:"08",SEP:"09",OCT:"10",NOV:"11",DEC:"12"};
 			var dd = datetext.slice(2,4);
 			var mmm = datetext.slice(4,7);
 			var yyyy = datetext.slice(7,11);
-			var date = `${dd}-${months[mmm.toLowerCase()]}-${yyyy}`;
+			var date = `${yyyy}-${months[mmm]}-${dd}`;
 			//return date;
 			return new Date(date);
 		}
