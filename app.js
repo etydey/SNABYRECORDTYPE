@@ -328,8 +328,7 @@ const d3Tableau = () => {
 		}
 
 		function dateConvert(datetext) {
-			var months = {JAN:0,FEB:1,MAR:2,APR:3,MAY:4,JUN:5,
-                JUL:6,AUG:7,SEP:8,OCT:9,NOV:10,DEC:11};
+			var months = {JAN:0,FEB:1,MAR:2,APR:3,MAY:4,JUN:5,JUL:6,AUG:7,SEP:8,OCT:9,NOV:10,DEC:11};
 			var dd = datetext.slice(2,4);
 			var mmm = datetext.slice(4,7);
 			var yyyy = datetext.slice(7,11);
@@ -340,8 +339,7 @@ const d3Tableau = () => {
 			var datevalue = dateConvert(node.Variant_Identified_Date).toDateString();
 			var htmlContent = "<div>";
 			htmlContent += "Variant: " + node.VARIANT + "<br>";
-			htmlContent +=
-				"Identified Date: " + datevalue + "<br>";
+			htmlContent += "Identified Date: " + datevalue + "<br>";
 			htmlContent += "ID: " + node.ID + "<br>";
 			htmlContent += "Zone: " + node.Case_Zone + "<br>";
 			htmlContent += "Record Type: " + recordType(node) + "<br>";
