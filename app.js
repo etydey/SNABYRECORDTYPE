@@ -144,7 +144,7 @@ const d3Tableau = () => {
 
 			console.log(filtered_d3_data);
 
-			d3_functions(filtered_d3_data, true, nodeSheet);
+			d3_functions(filtered_d3_data, true);//, nodeSheet);
 		}
 
 		//add Listeners
@@ -200,13 +200,13 @@ const d3Tableau = () => {
 			.append("marker")
 			.attr("id", "resolved")
 			.attr("markerUnits", "userSpaceOnUse")
-			.attr("viewBox", "0 -5 10 10")
+			.attr("viewBox", "0 -1 50 50")
 			.attr("refX", 10)
 			.attr("refY", 0)
-			.attr("markerWidth", 6)
-			.attr("markerHeight", 6)
+			.attr("markerWidth", 7)
+			.attr("markerHeight", 7)
 			.attr("orient", "auto")
-			.attr("stroke-width", 1)
+			.attr("stroke-width", 2)
 			.append("path")
 			.attr("d", "M0,-5L10,0L0,5")
 			.attr("fill", "#000000");
@@ -220,7 +220,7 @@ const d3Tableau = () => {
 			.style("padding", "10px")
 			.style("z-index", "10")
 			.style("width", "300px")
-			.style("height", "80px")
+			.style("height", "110px")
 			.style("background-color", "rgba(230, 242, 255, 0.8)")
 			.style("border-radius", "5px")
 			.style("visibility", "hidden")
@@ -245,7 +245,7 @@ const d3Tableau = () => {
 				.data(graph.nodes)
 				.enter()
 				.append("circle")
-				.attr("r", 4.5)
+				.attr("r", 5.5)
 				.style("fill", nodeColor)
 				.on("mouseover", handleMouseOver)
 				.on("mouseout", handleMouseOut)
