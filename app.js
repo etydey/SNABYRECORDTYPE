@@ -309,8 +309,8 @@ const d3Tableau = () => {
 
 		function nodeColor(node) {
 			var color;
-			//if (node.RECORD_TYPE == "CI - Not Tested") color = "grey";
-			//if (node.RECORD_TYPE == "CI - Tested Negative") color = "green";
+			if (node.RECORD_TYPE == "CI - Not Tested") color = "grey";
+			if (node.RECORD_TYPE == "CI - Tested Negative") color = "green";
 			if (node.RECORD_TYPE == "DI - VOC Positive") color = "red";
 			if (node.RECORD_TYPE == "DI - Wild Type") color = "blue";
 
@@ -319,8 +319,8 @@ const d3Tableau = () => {
 
 		function recordType(node) {
 			var type;
-			//if (node.RECORD_TYPE == "CI - Not Tested") type = "Not Tested";
-			//if (node.RECORD_TYPE == "CI - Tested Negative") type = "Tested Negative";
+			if (node.RECORD_TYPE == "CI - Not Tested") type = "Not Tested";
+			if (node.RECORD_TYPE == "CI - Tested Negative") type = "Tested Negative";
 			if (node.RECORD_TYPE == "DI - VOC Positive") type = "VOC Positive";
 			if (node.RECORD_TYPE == "DI - Wild Type") type = "Wild Type";
 
