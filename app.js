@@ -200,7 +200,7 @@ const d3Tableau = () => {
 			.append("marker")
 			.attr("id", "resolved")
 			.attr("markerUnits", "userSpaceOnUse")
-			.attr("viewBox", "0 -1 80 80")
+			.attr("viewBox", "0 -7 10 10")
 			.attr("refX", 10)
 			.attr("refY", 0)
 			.attr("markerWidth", 7)
