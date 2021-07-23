@@ -340,7 +340,7 @@ const d3Tableau = () => {
 		{
 			console.log(node.Case_FirstName);
 			console.log(node.Case_FirstName !== '%null%');
-			if(node.Case_FirstName !== '%null%' || node.Case_FirstName !== "")
+			if(node.Case_FirstName !== '%null%')
 				{
 					return "Name: " + node.Case_FirstName + " " + node.Case_LastName;
 				}
