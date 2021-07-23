@@ -48,19 +48,20 @@ const d3Tableau = () => {
 		for (const [i, row] of dataTable.data.entries()) {
 			list.push({
 				index: i,
-				ID: row[fieldIdx("ID")].value,
-				Case_Variant: row[fieldIdx("Case Variant")].value,
-				Case_ID: row[fieldIdx("Case ID")].value,
-				Case_Zone: row[fieldIdx("Case Zone")].value,
-				contactRecordType: row[fieldIdx("Contact Recordtype")].value,
-				contactVoc: row[fieldIdx("Contact VOC")].value,
-				contactId: row[fieldIdx("Contact ID")].value,
+				ID: row[fieldIdx("ID")].value,				
+				Case_ID: row[fieldIdx("Case Id")].value,
 				idLabel: row[fieldIdx("Id Label")].value,
+				Case_FirstName: row[fieldIdx("Case First Name")].value,
+				Case_LastName: row[fieldIdx("Case Last Name")].value,
+				Case_Variant: row[fieldIdx("Case Variant Result")].value,
+				Case_Zone: row[fieldIdx("Case Zone")].value,				
+				Case_Age: row[fieldIdx("Case Age")].value,
+				Dateofdiagnosis: row[fieldIdx("Dateofdiagnosis")].value,
 				RECORD_TYPE: row[fieldIdx("Record Type")].value,
-				testResultDate: row[fieldIdx("Test Result Date")].value,
-				VARIANT: row[fieldIdx("Variant")].value,
-				Variant_Identified_Date:
-					row[fieldIdx("Variant Identified Date")].value,
+				contactId: row[fieldIdx("Contact Id")].value,
+				contactFirstName: row[fieldIdx("Contact First Name")].value,
+				contactLastName: row[fieldIdx("Contact Last Name")].value,
+				contactAge: row[fieldIdx("Contact Age")].value,
 			});
 		}
 		return list;
@@ -312,7 +313,7 @@ const d3Tableau = () => {
 			if (node.RECORD_TYPE == "CI - Not Tested") color = "grey";
 			if (node.RECORD_TYPE == "CI - Tested Negative") color = "green";
 			if (node.RECORD_TYPE == "DI - VOC Positive") color = "red";
-			if (node.RECORD_TYPE == "DI - Wild Type") color = "blue";
+			if (node.RECORD_TYPE == "DI - Wild Type/Not Screen") color = "blue";
 
 			return color;
 		}
@@ -322,7 +323,7 @@ const d3Tableau = () => {
 			if (node.RECORD_TYPE == "CI - Not Tested") type = "Not Tested";
 			if (node.RECORD_TYPE == "CI - Tested Negative") type = "Tested Negative";
 			if (node.RECORD_TYPE == "DI - VOC Positive") type = "VOC Positive";
-			if (node.RECORD_TYPE == "DI - Wild Type") type = "Wild Type";
+			if (node.RECORD_TYPE == "DI - Wild Type/Not Screen") type = "Wild Type";
 
 			return type;
 		}
@@ -336,13 +337,15 @@ const d3Tableau = () => {
 		}
 
 		function handleMouseOver(node) {
-			var datevalue = dateConvert(node.Variant_Identified_Date).toDateString();
+			var datevalue = node.Dateofdiagnosis.toDateString();
 			var htmlContent = "<div>";
-			htmlContent += "Variant: " + node.VARIANT + "<br>";
-			htmlContent += "Identified Date: " + datevalue + "<br>";
 			htmlContent += "ID: " + node.ID + "<br>";
+			htmlContent += "Name: " + node.Case_FirstName + " " + node.Case_LastName + "<br>";
+			htmlContent += "Age: " + node.Case_Age + "<br>";
+			htmlContent += "Variant: " + node.Case_Variant + "<br>";
+			htmlContent += "Identified Date: " + datevalue + "<br>";			
 			htmlContent += "Zone: " + node.Case_Zone + "<br>";
-			htmlContent += "Record Type: " + recordType(node) + "<br>";
+			//htmlContent += "Record Type: " + recordType(node) + "<br>";
 			htmlContent += "</div>";
 			tooltip.html(htmlContent);
 			return tooltip
