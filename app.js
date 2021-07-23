@@ -336,16 +336,28 @@ const d3Tableau = () => {
 			return new Date(yyyy, months[mmm], dd);
 		}
 
+		function findName(node)
+		{
+			if(node.Case_FirstName != null)
+				{
+					return "Name: " + node.Case_FirstName + " " + node.Case_LastName;
+				}
+				else
+				{
+					return "Contact Name: " + node.contactFirstName + " " + node.contactLastName;
+				}
+		}
+
 		function handleMouseOver(node) {
 			//var datevalue = node.Dateofdiagnosis.toDateString();
 			var htmlContent = "<div>";
 			htmlContent += "ID: " + node.ID + "<br>";
-			htmlContent += "Name: " + node.Case_FirstName + " " + node.Case_LastName + "<br>";
+			htmlContent += findName(node) + "<br>";
 			htmlContent += "Age: " + node.Case_Age + "<br>";
+			htmlContent += "Record Type: " + recordType(node) + "<br>";
 			htmlContent += "Variant: " + node.Case_Variant + "<br>";
 			htmlContent += "Identified Date: " + node.Dateofdiagnosis + "<br>";			
-			htmlContent += "Zone: " + node.Case_Zone + "<br>";
-			//htmlContent += "Record Type: " + recordType(node) + "<br>";
+			htmlContent += "Zone: " + node.Case_Zone + "<br>";			
 			htmlContent += "</div>";
 			tooltip.html(htmlContent);
 			return tooltip
