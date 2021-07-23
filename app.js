@@ -337,13 +337,13 @@ const d3Tableau = () => {
 		}
 
 		function handleMouseOver(node) {
-			var datevalue = node.Dateofdiagnosis.toDateString();
+			//var datevalue = node.Dateofdiagnosis.toDateString();
 			var htmlContent = "<div>";
 			htmlContent += "ID: " + node.ID + "<br>";
 			htmlContent += "Name: " + node.Case_FirstName + " " + node.Case_LastName + "<br>";
 			htmlContent += "Age: " + node.Case_Age + "<br>";
 			htmlContent += "Variant: " + node.Case_Variant + "<br>";
-			htmlContent += "Identified Date: " + datevalue + "<br>";			
+			htmlContent += "Identified Date: " + node.Dateofdiagnosis + "<br>";			
 			htmlContent += "Zone: " + node.Case_Zone + "<br>";
 			//htmlContent += "Record Type: " + recordType(node) + "<br>";
 			htmlContent += "</div>";
