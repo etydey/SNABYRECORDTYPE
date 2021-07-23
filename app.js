@@ -338,7 +338,8 @@ const d3Tableau = () => {
 
 		function findName(node)
 		{
-			if(node.Case_FirstName !== "%null%" || node.Case_FirstName !== "")
+			console.log(node.Case_FirstName);
+			if(node.Case_FirstName !== "null" || node.Case_FirstName !== "")
 				{
 					return "Name: " + node.Case_FirstName + " " + node.Case_LastName;
 				}
