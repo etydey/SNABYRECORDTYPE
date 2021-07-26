@@ -220,8 +220,8 @@ const d3Tableau = () => {
 			.style("position", "absolute")
 			.style("padding", "10px")
 			.style("z-index", "10")
-			.style("width", "500px")
-			.style("height", "350px")
+			.style("width", "400px")
+			.style("height", "200px")
 			.style("background-color", "rgba(230, 242, 255, 0.8)")
 			.style("border-radius", "5px")
 			.style("visibility", "hidden")
@@ -346,8 +346,8 @@ const d3Tableau = () => {
 
 		function findName(node)
 		{
-			console.log(node.Case_FirstName);
-			console.log(node.Case_FirstName !== '%null%');
+			//console.log(node.Case_FirstName);
+			//console.log(node.Case_FirstName !== '%null%');
 			if(node.Case_FirstName !== '%null%')
 				{
 					return "Name: " + node.Case_FirstName + " " + node.Case_LastName;
@@ -360,6 +360,7 @@ const d3Tableau = () => {
 
 		function findAge(node)
 		{
+			console.log(node.Case_Age);
 			if(node.Case_Age !== '%null%')
 				{
 					return "Age: " + node.Case_Age;
@@ -370,6 +371,19 @@ const d3Tableau = () => {
 				}
 		}
 
+		function findVariant(node)
+		{
+			//console.log(node.Case_Variant);
+			if(node.Case_Variant !== '%null%')
+				{
+					return "Variant: " + node.Case_Variant;
+				}
+				else
+				{
+					return "Variant: N/A";
+				}
+		}
+
 		function handleMouseOver(node) {
 			//var datevalue = node.Dateofdiagnosis.toDateString();
 			var htmlContent = "<div>";
@@ -377,7 +391,7 @@ const d3Tableau = () => {
 			htmlContent += findName(node) + "<br>";
 			htmlContent += findAge(node) + "<br>";
 			htmlContent += "Record Type: " + recordType(node) + "<br>";
-			htmlContent += "Variant: " + node.Case_Variant + "<br>";
+			htmlContent += findVariant(node) + "<br>";
 			htmlContent += identifiedDate(node) + "<br>";			
 			htmlContent += "Zone: " + node.Case_Zone + "<br>";			
 			htmlContent += "</div>";
