@@ -220,8 +220,8 @@ const d3Tableau = () => {
 			.style("position", "absolute")
 			.style("padding", "10px")
 			.style("z-index", "10")
-			.style("width", "450px")
-			.style("height", "200px")
+			.style("width", "500px")
+			.style("height", "350px")
 			.style("background-color", "rgba(230, 242, 255, 0.8)")
 			.style("border-radius", "5px")
 			.style("visibility", "hidden")
@@ -328,12 +328,20 @@ const d3Tableau = () => {
 			return type;
 		}
 
-		function dateConvert(datetext) {
-			var months = {JAN:0,FEB:1,MAR:2,APR:3,MAY:4,JUN:5,JUL:6,AUG:7,SEP:8,OCT:9,NOV:10,DEC:11};
-			var dd = datetext.slice(2,4);
-			var mmm = datetext.slice(4,7);
-			var yyyy = datetext.slice(7,11);
-			return new Date(yyyy, months[mmm], dd);
+		function identifiedDate(node) {
+			//var months = {JAN:0,FEB:1,MAR:2,APR:3,MAY:4,JUN:5,JUL:6,AUG:7,SEP:8,OCT:9,NOV:10,DEC:11};
+			//var dd = datetext.slice(2,4);
+			//var mmm = datetext.slice(4,7);
+			//var yyyy = datetext.slice(7,11);
+			//return new Date(yyyy, months[mmm], dd);
+			if(node.Dateofdiagnosis !== '%null%')
+				{
+					return "Identified Date: " + node.Dateofdiagnosis;
+				}
+				else
+				{
+					return "Identified Date: N/A";
+				}
 		}
 
 		function findName(node)
@@ -350,15 +358,27 @@ const d3Tableau = () => {
 				}
 		}
 
+		function findAge(node)
+		{
+			if(node.Case_Age !== '%null%')
+				{
+					return "Age: " + node.Case_Age;
+				}
+				else
+				{
+					return "Contact Age: " + node.contactAge;
+				}
+		}
+
 		function handleMouseOver(node) {
 			//var datevalue = node.Dateofdiagnosis.toDateString();
 			var htmlContent = "<div>";
 			htmlContent += "ID: " + node.ID + "<br>";
 			htmlContent += findName(node) + "<br>";
-			htmlContent += "Age: " + node.Case_Age + "<br>";
+			htmlContent += findAge(node) + "<br>";
 			htmlContent += "Record Type: " + recordType(node) + "<br>";
 			htmlContent += "Variant: " + node.Case_Variant + "<br>";
-			htmlContent += "Identified Date: " + node.Dateofdiagnosis + "<br>";			
+			htmlContent += identifiedDate(node) + "<br>";			
 			htmlContent += "Zone: " + node.Case_Zone + "<br>";			
 			htmlContent += "</div>";
 			tooltip.html(htmlContent);
