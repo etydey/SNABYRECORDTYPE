@@ -221,7 +221,7 @@ const d3Tableau = () => {
 			.style("padding", "10px")
 			.style("z-index", "10")
 			.style("width", "400px")
-			.style("height", "200px")
+			.style("height", "180px")
 			.style("background-color", "rgba(230, 242, 255, 0.8)")
 			.style("border-radius", "5px")
 			.style("visibility", "hidden")
@@ -365,9 +365,13 @@ const d3Tableau = () => {
 				{
 					return "Age: " + node.Case_Age;
 				}
-				else
+				else if(node.contactAge !== '%null%')
 				{
 					return "Contact Age: " + node.contactAge;
+				}
+				else
+				{
+					return "Contact Age: N/A";
 				}
 		}
 
