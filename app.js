@@ -394,8 +394,6 @@ const d3Tableau = () => {
 
 		function findName(node)
 		{
-			//console.log(node.Case_FirstName);
-			//console.log(node.Case_FirstName !== '%null%');
 			if(node.Case_FirstName !== '%null%')
 				{
 					return "Name: " + node.Case_FirstName + " " + node.Case_LastName;
@@ -408,7 +406,6 @@ const d3Tableau = () => {
 
 		function findAge(node)
 		{
-			console.log(node.Case_Age);
 			if(node.Case_Age !== '%null%')
 				{
 					return "Age: " + node.Case_Age;
@@ -425,7 +422,6 @@ const d3Tableau = () => {
 
 		function findVariant(node)
 		{
-			//console.log(node.Case_Variant);
 			if(node.Case_Variant !== '%null%')
 				{
 					return "Variant: " + node.Case_Variant;
