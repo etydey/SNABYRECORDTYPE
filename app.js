@@ -162,9 +162,57 @@ const d3Tableau = () => {
 		);
 
 		d3_functions(d3_data, false);
+		update();
 	}
 
 	getData();
+
+	function update() {
+		var nodes = flatten(root),
+			links = d3.layout.tree().links(nodes);
+	  
+		// Restart the force layout.
+		root.fixed=true;
+		root.x=900;
+		root.y=500;
+		force
+			.nodes(nodes)
+			.links(links)
+			.start();
+	  
+		// Update the links…
+		link = vis.selectAll("line.link")
+			.data(links, function(d) { return d.target.id; });
+	  
+		// Enter any new links.
+		link.enter().insert("svg:line", ".node")
+			.attr("class", "link")
+			.attr("x1", function(d) { return d.source.x+100; })
+			.attr("y1", function(d) { return d.source.y+100; })
+			.attr("x2", function(d) { return d.target.x+100; })
+			.attr("y2", function(d) { return d.target.y+100; });
+	  
+		// Exit any old links.
+		link.exit().remove();
+	  
+		// Update the nodes…
+		node = vis.selectAll("circle.node")
+			.data(nodes, function(d) { return d.ID; })
+			.style("fill", nodeColor);
+	  
+		// Enter any new nodes.
+		node.enter().append("svg:circle")
+			.attr("class", "node")
+			.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) { return d.y; })
+			.attr("r", function(d) { return Math.sqrt(d.size) / 10 || 25; })
+			.style("fill", nodeColor)
+			.on("click", click)
+			.call(force.drag);
+	  
+		// Exit any old nodes.
+		node.exit().remove();
+	  }
 
 	d3_functions = (d3_data, svgCreated) => {
 		//////////////////////////////////////////////////////
@@ -190,7 +238,7 @@ const d3Tableau = () => {
 		var simulation = d3
 			.forceSimulation()
 			.force("charge", d3.forceManyBody().strength(-10))
-			.force("center", d3.forceCenter(width / 4, height / 4))
+			.force("center", d3.forceCenter(width / 2, height / 2))
 			.force(
 				"link",
 				d3.forceLink().id((d) => d.ID)
