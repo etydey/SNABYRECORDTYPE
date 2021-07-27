@@ -190,7 +190,7 @@ const d3Tableau = () => {
 		var simulation = d3
 			.forceSimulation()
 			.force("charge", d3.forceManyBody().strength(-10))
-			.force("center", d3.forceCenter(width / 2, height / 2))
+			.force("center", d3.forceCenter(width / 4, height / 4))
 			.force(
 				"link",
 				d3.forceLink().id((d) => d.ID)
