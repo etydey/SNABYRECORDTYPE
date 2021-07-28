@@ -168,13 +168,13 @@ const d3Tableau = () => {
 	getData();
 
 	function update() {
-		var nodes = flatten(root),
+		var nodes = flatten(d3_data),
 			links = d3.layout.tree().links(nodes);
 	  
 		// Restart the force layout.
-		root.fixed=true;
-		root.x=900;
-		root.y=500;
+		d3_data.fixed=true;
+		d3_data.x=900;
+		d3_data.y=500;
 		force
 			.nodes(nodes)
 			.links(links)
@@ -182,7 +182,7 @@ const d3Tableau = () => {
 	  
 		// Update the links…
 		link = vis.selectAll("line.link")
-			.data(links, function(d) { return d.target.id; });
+			.data(links, function(d) { return d.target.ID; });
 	  
 		// Enter any new links.
 		link.enter().insert("svg:line", ".node")
@@ -212,6 +212,19 @@ const d3Tableau = () => {
 	  
 		// Exit any old nodes.
 		node.exit().remove();
+	  }
+
+	  function flatten(root) {
+		var nodes = [], i = 0;
+	  
+		function recurse(node) {
+		  if (node.children) node.children.forEach(recurse);
+		  if (!node.id) node.id = ++i;
+		  nodes.push(node);
+		}
+	  
+		recurse(root);
+		return nodes;
 	  }
 
 	d3_functions = (d3_data, svgCreated) => {
