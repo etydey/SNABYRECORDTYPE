@@ -142,7 +142,7 @@ const d3Tableau = () => {
 				nodes: nodeFields,
 				links: filteredLinks,
 			};
-
+			svg.selectAll(g).remove();
 			console.log(filtered_d3_data);
 
 			d3_functions(filtered_d3_data, true);//, nodeSheet);
