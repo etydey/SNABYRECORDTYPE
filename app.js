@@ -185,7 +185,8 @@ const d3Tableau = () => {
 
 		//Zoom
 		var g = svg.append("g").attr("class", "everything");
-		svg.selectAll(d3_data).data(function(d) {return d.ID} ).exit().remove();
+		
+		svg.selectAll(g).remove();
 		//ForceSimulation
 		var simulation = d3
 			.forceSimulation()
