@@ -173,6 +173,7 @@ const d3Tableau = () => {
 		//////////////////////////////////////////////////////
 		if (svgCreated) {
 			d3.selectAll("svg > *").remove();
+			svg.selectAll(g).remove();
 			console.log("remove svg");
 		}
 
@@ -186,7 +187,7 @@ const d3Tableau = () => {
 		//Zoom
 		var g = svg.append("g").attr("class", "everything");
 		
-		svg.selectAll(g).remove();
+		
 		//ForceSimulation
 		var simulation = d3
 			.forceSimulation()
