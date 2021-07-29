@@ -173,7 +173,7 @@ const d3Tableau = () => {
 		//////////////////////////////////////////////////////
 		if (svgCreated) {
 			d3.selectAll("svg > *").remove();
-			svg.selectAll(g).remove();
+			//svg.selectAll(g).remove();
 			console.log("remove svg");
 		}
 
