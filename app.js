@@ -250,7 +250,7 @@ const d3Tableau = () => {
 		//ForceSimulation
 		var simulation = d3
 			.forceSimulation()
-			.force("charge", d3.forceManyBody().strength(-5))
+			.force("charge", d3.forceManyBody().strength(-10))
 			.force("center", d3.forceCenter(width / 2, height / 2))
 			.force(
 				"link",
@@ -345,6 +345,7 @@ const d3Tableau = () => {
 					})
 					.attr("marker-end", "url(#resolved)");
 			}
+			link.exit().remove();
 		}
 
 		//Zoom capabilities
