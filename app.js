@@ -267,6 +267,7 @@ const d3Tableau = () => {
 				.force("link")
 				.links(graph.links);
 
+				simulation.alphaTarget(0).restart();
 			function ticked() {
 				node.attr("cx", function (d) {
 					return d.x;
