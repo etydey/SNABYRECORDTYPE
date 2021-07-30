@@ -238,6 +238,8 @@ const d3Tableau = () => {
 				.enter()
 				.append("line");
 
+				link.exit().remove();
+
 			var node = g
 				.append("g")
 				.attr("class", "nodes")
@@ -256,6 +258,8 @@ const d3Tableau = () => {
 						.on("drag", dragged)
 						.on("end", dragended)
 				);
+
+				node.exit().remove();
 
 			simulation
 				.nodes(graph.nodes)
