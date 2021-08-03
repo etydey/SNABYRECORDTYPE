@@ -142,7 +142,7 @@ const d3Tableau = () => {
 				nodes: nodeFields,
 				links: filteredLinks,
 			};
-			//svg.selectAll(g).remove();
+
 			console.log(filtered_d3_data);
 
 			d3_functions(filtered_d3_data, true);//, nodeSheet);
@@ -279,8 +279,8 @@ const d3Tableau = () => {
 				.force("link")
 				.links(graph.links);
 
-				simulation.alpha(1).alphaTarget(0).restart();
-				
+				//simulation.alpha(1).alphaTarget(0).restart();
+
 			function ticked() {
 				node.attr("cx", function (d) {
 					return d.x;
