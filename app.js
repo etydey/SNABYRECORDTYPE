@@ -230,6 +230,22 @@ const d3Tableau = () => {
 			const graph = d3_data;
 			//const graph = await d3.json("./VOC_ALL_Links_No_Null.json");
 			console.log("graph", graph);
+			
+			//	UPDATE
+				link = link.data(graph.links, function(d) { return d.ID;});
+			//	EXIT
+				link.exit().remove();
+			//	ENTER
+			var newlink = g
+				.append("g")
+				.attr("class", "links")
+				.selectAll("line")
+				.data(graph.links)
+				.enter()
+				.append("line");
+			//	ENTER + UPDATE
+				link = link.merge(newlink);
+
 			//	UPDATE
 			node = node.data(graph.nodes, function(d) {return d.ID;});
 			//	EXIT
@@ -256,23 +272,6 @@ const d3Tableau = () => {
 				
 			//	ENTER + UPDATE
 				node = node.merge(newnode);
-
-			//	UPDATE
-				link = link.data(graph.links, function(d) { return d.ID;});
-			//	EXIT
-				link.exit().remove();
-			//	ENTER
-			var newlink = g
-				.append("g")
-				.attr("class", "links")
-				.selectAll("line")
-				.data(graph.links)
-				.enter()
-				.append("line");
-			//	ENTER + UPDATE
-				link = link.merge(newlink);
-
-			
 
 			simulation
 				.nodes(graph.nodes)
