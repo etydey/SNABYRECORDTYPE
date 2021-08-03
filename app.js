@@ -236,7 +236,7 @@ const d3Tableau = () => {
 			//	EXIT
 				link.exit().remove();
 			//	ENTER
-			var newlink = g
+			var newlink = link
 				.append("g")
 				.attr("class", "links")
 				.selectAll("line")
@@ -251,7 +251,7 @@ const d3Tableau = () => {
 			//	EXIT
 			node.exit().remove();
 			//	ENTER
-			var newnode = g
+			var newnode = node
 				.append("g")
 				.attr("class", "nodes")
 				.selectAll("circle")
