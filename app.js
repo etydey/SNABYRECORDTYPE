@@ -244,7 +244,7 @@ const d3Tableau = () => {
 				.enter()
 				.append("line");
 			//	ENTER + UPDATE
-				link = link.merge(newlink);
+				//link = link.merge(newlink);
 
 			//	UPDATE
 			//node = node.data(graph.nodes, function(d) {return d.ID;});
