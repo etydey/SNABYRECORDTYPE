@@ -236,7 +236,7 @@ const d3Tableau = () => {
 			//	EXIT
 				link.exit().remove();
 			//	ENTER
-			var newlink = link
+			var newlink = g
 				.append("g")
 				.attr("class", "links")
 				.selectAll("line")
@@ -251,7 +251,7 @@ const d3Tableau = () => {
 			//	EXIT
 			node.exit().remove();
 			//	ENTER
-			var newnode = node
+			var newnode = g
 				.append("g")
 				.attr("class", "nodes")
 				.selectAll("circle")
@@ -279,7 +279,7 @@ const d3Tableau = () => {
 				.force("link")
 				.links(graph.links);
 
-				//simulation.alpha(1).alphaTarget(0).restart();
+				simulation.alpha(1).alphaTarget(0).restart();
 
 			function ticked() {
 				node.attr("cx", function (d) {
