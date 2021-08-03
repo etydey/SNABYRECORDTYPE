@@ -186,8 +186,8 @@ const d3Tableau = () => {
 		//Zoom
 		var g = svg.append("g").attr("class", "everything");
 		
-		var link = svg.append("g").selectAll(".link"),
-			node = svg.append("g").selectAll(".node");
+		//var link = svg.append("g").selectAll(".link"),
+			//node = svg.append("g").selectAll(".node");
 		//ForceSimulation
 		var simulation = d3
 			.forceSimulation()
@@ -236,8 +236,7 @@ const d3Tableau = () => {
 			//	EXIT
 				//link.exit().remove();
 			//	ENTER
-			//var 
-			link = g
+			var link = g
 				.append("g")
 				.attr("class", "links")
 				.selectAll("line")
@@ -252,8 +251,7 @@ const d3Tableau = () => {
 			//	EXIT
 			//node.exit().remove();
 			//	ENTER
-			//var 
-			node = g
+			var node = g
 				.append("g")
 				.attr("class", "nodes")
 				.selectAll("circle")
