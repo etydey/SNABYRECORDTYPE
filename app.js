@@ -118,22 +118,14 @@ const d3Tableau = () => {
 
 			for (let i = 0; i < originalLinksFields.length; i++) {
 				if (
-					nodeFields.some(
-						(e) => e.ID === originalLinksFields[i].source
-					)
+					nodeFields.some((e) => e.ID === originalLinksFields[i].source) &&
+					nodeFields.some((e) => e.ID === originalLinksFields[i].target)
 				) {
 					filteredLinks.push({
 						source: originalLinksFields[i].source,
 						target: originalLinksFields[i].target,
 					});
-				} else {
-					// console.log(
-					// 	"not found",
-					// 	originalLinksFields[i].source.ID,
-					// 	"i",
-					// 	i
-					// );
-				}
+				} 
 			}
 
 			console.log("filteredLinks", filteredLinks);
