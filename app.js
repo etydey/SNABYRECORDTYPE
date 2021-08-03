@@ -173,7 +173,6 @@ const d3Tableau = () => {
 		//////////////////////////////////////////////////////
 		if (svgCreated) {
 			d3.selectAll("svg > *").remove();
-			//svg.selectAll(g).remove();
 			console.log("remove svg");
 		}
 
@@ -187,7 +186,8 @@ const d3Tableau = () => {
 		//Zoom
 		var g = svg.append("g").attr("class", "everything");
 		
-		
+		var link = svg.append("g").selectAll(".link"),
+			node = svg.append("g").selectAll(".node");
 		//ForceSimulation
 		var simulation = d3
 			.forceSimulation()
@@ -230,17 +230,12 @@ const d3Tableau = () => {
 			const graph = d3_data;
 			//const graph = await d3.json("./VOC_ALL_Links_No_Null.json");
 			console.log("graph", graph);
-			var link = g
-				.append("g")
-				.attr("class", "links")
-				.selectAll("line")
-				.data(graph.links)
-				.enter()
-				.append("line");
-
-				link.exit().remove();
-
-			var node = g
+			//	UPDATE
+			node = node.data(graph.nodes, function(d) {return d.ID;});
+			//	EXIT
+			node.exit().remove();
+			//	ENTER
+			var newnode = g
 				.append("g")
 				.attr("class", "nodes")
 				.selectAll("circle")
@@ -258,8 +253,26 @@ const d3Tableau = () => {
 						.on("drag", dragged)
 						.on("end", dragended)
 				);
+				
+			//	ENTER + UPDATE
+				node = node.merge(newnode);
 
-				node.exit().remove();
+			//	UPDATE
+				link = link.data(graph.links, function(d) { return d.ID;});
+			//	EXIT
+				link.exit().remove();
+			//	ENTER
+			var newlink = g
+				.append("g")
+				.attr("class", "links")
+				.selectAll("line")
+				.data(graph.links)
+				.enter()
+				.append("line");
+			//	ENTER + UPDATE
+				link = link.merge(newlink);
+
+			
 
 			simulation
 				.nodes(graph.nodes)
