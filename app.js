@@ -232,11 +232,12 @@ const d3Tableau = () => {
 			console.log("graph", graph);
 			
 			//	UPDATE
-				link = link.data(graph.links, function(d) { return d.ID;});
+				//link = link.data(graph.links, function(d) { return d.ID;});
 			//	EXIT
-				link.exit().remove();
+				//link.exit().remove();
 			//	ENTER
-			var newlink = g
+			//var 
+			link = g
 				.append("g")
 				.attr("class", "links")
 				.selectAll("line")
@@ -247,11 +248,12 @@ const d3Tableau = () => {
 				link = link.merge(newlink);
 
 			//	UPDATE
-			node = node.data(graph.nodes, function(d) {return d.ID;});
+			//node = node.data(graph.nodes, function(d) {return d.ID;});
 			//	EXIT
-			node.exit().remove();
+			//node.exit().remove();
 			//	ENTER
-			var newnode = g
+			//var 
+			node = g
 				.append("g")
 				.attr("class", "nodes")
 				.selectAll("circle")
@@ -271,7 +273,7 @@ const d3Tableau = () => {
 				);
 				
 			//	ENTER + UPDATE
-				node = node.merge(newnode);
+				//node = node.merge(newnode);
 
 			simulation
 				.nodes(graph.nodes)
@@ -279,7 +281,7 @@ const d3Tableau = () => {
 				.force("link")
 				.links(graph.links);
 
-				simulation.alpha(1).alphaTarget(0).restart();
+				//simulation.alpha(1).alphaTarget(0).restart();
 
 			function ticked() {
 				node.attr("cx", function (d) {
