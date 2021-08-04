@@ -117,7 +117,7 @@ const d3Tableau = () => {
 
 			for (let i = 0; i < linksFields.length; i++) {
 				console.log("filtered id:",linksFields[i].target);
-				console.log("nodeFields indexof:",nodeFields.indexOf((e) => e.ID(linksFields[i].target)));
+				console.log("nodeFields indexof:",nodeFields.some((e) => e.ID === linksFields[i].target));
 				if (
 					nodeFields.indexOf((e) => e.ID(linksFields[i].target)) !== -1
 				) {
