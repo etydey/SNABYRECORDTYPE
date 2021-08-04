@@ -118,7 +118,7 @@ const d3Tableau = () => {
 			for (let i = 0; i < linksFields.length; i++) {
 				if (
 					nodeFields.indexOf(
-						(e) => e.ID(linksFields[i].target.ID) !== -1
+						(e) => e.ID(linksFields[i].target) !== -1
 					)
 				) {
 					filteredLinks.push({
@@ -185,7 +185,7 @@ const d3Tableau = () => {
 			.forceSimulation()
 			.force("charge", d3.forceManyBody().strength(-10))
 			.force("center", d3.forceCenter(width / 2, height / 2))
-			.force("link", d3.forceLink().id((d) => d.ID));
+			.force("link", d3.forceLink().id((d) => d.source.ID));
 
 		//Arrow
 		var marker = g
