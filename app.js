@@ -117,14 +117,15 @@ const d3Tableau = () => {
 			filteredLinks = [];
 
 			for (let i = 0; i < originalLinksFields.length; i++) {
-				if (
-					nodeFields.forEach((e) => e.ID === originalLinksFields[i].source.ID)
-				) {
-					filteredLinks.push({
-						source: originalLinksFields[i].source,
-						target: originalLinksFields[i].target,
-					});
-				} 
+				nodeFields.forEach(function(e) { 
+					if(e.ID === originalLinksFields[i].source.ID)
+					{				 
+						filteredLinks.push({
+							source: originalLinksFields[i].source,
+							target: originalLinksFields[i].target,
+						});
+					}
+				}) 
 			}
 
 			console.log("filteredLinks", filteredLinks);
