@@ -98,9 +98,7 @@ const d3Tableau = () => {
 			const [nodeDataTable, nodeSheet] = await getDataTable("node_table");
 			const nodeFields = await getNodeFields(nodeDataTable);
 
-			const [linksDataTable, linksSheet] = await getDataTable(
-				"links_table"
-			);
+			const [linksDataTable, linksSheet] = await getDataTable("links_table");
 			const linksFields = await getLinksFields(linksDataTable);
 
 			const originalLinksFields = originalFields.links;
@@ -117,16 +115,17 @@ const d3Tableau = () => {
 
 			filteredLinks = [];
 
-			for (let i = 0; i < linksFields.length; i++) {
-				nodeFields.forEach(function(e) { 
-					if(e.ID === linksFields[i].source.ID)
-					{				 
-						filteredLinks.push({
-							source: linksFields[i].source,
-							target: linksFields[i].target,
-						});
-					}
-				}) 
+			for (let i = 0; i < originalLinksFields.length; i++) {
+				if (
+					nodeFields.indexOf(
+						(e) => e.ID(originalLinksFields[i].source) !== -1
+					)
+				) {
+					filteredLinks.push({
+						source: originalLinksFields[i].source,
+						target: originalLinksFields[i].target,
+					});
+				} 
 			}
 
 			console.log("filteredLinks", filteredLinks);
