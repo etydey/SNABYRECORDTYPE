@@ -185,7 +185,7 @@ const d3Tableau = () => {
 			.forceSimulation()
 			.force("charge", d3.forceManyBody().strength(-10))
 			.force("center", d3.forceCenter(width / 2, height / 2))
-			.force("link", d3.forceLink().id((d) => d.source.ID));
+			.force("link", d3.forceLink().id((d) => d.ID));
 
 		//Arrow
 		var marker = g
