@@ -116,10 +116,10 @@ const d3Tableau = () => {
 			filteredLinks = [];
 
 			for (let i = 0; i < linksFields.length; i++) {
-				console.log("filtered id:",linksFields[i].target);
-				console.log("nodeFields indexof:",nodeFields.some((e) => e.ID === linksFields[i].target));
+				//console.log("filtered id:",linksFields[i].target);
+				//console.log("nodeFields indexof:",nodeFields.some((e) => e.ID === linksFields[i].target));
 				if (
-					nodeFields.indexOf((e) => e.ID(linksFields[i].target)) !== -1
+					nodeFields.some((e) => e.ID === linksFields[i].target)
 				) {
 					console.log("filtered id:",linksFields[i].target);
 					filteredLinks.push({
