@@ -101,8 +101,8 @@ const d3Tableau = () => {
 			const [linksDataTable, linksSheet] = await getDataTable("links_table");
 			const linksFields = await getLinksFields(linksDataTable);
 
-			const originalLinksFields = originalFields.links;
-			console.log("originalLinksFields", originalLinksFields);
+			//const originalLinksFields = originalFields.links;
+			//console.log("originalLinksFields", originalLinksFields);
 
 			//Ensure all nodes that are in filtered table remain, as well as all nodes that are targets of nodes in table
 			//all nodes from filtered table = nodeFields
@@ -116,12 +116,9 @@ const d3Tableau = () => {
 			filteredLinks = [];
 
 			for (let i = 0; i < linksFields.length; i++) {
-				//console.log("filtered id:",linksFields[i].target);
-				//console.log("nodeFields indexof:",nodeFields.some((e) => e.ID === linksFields[i].target));
 				if (
 					nodeFields.some((e) => e.ID === linksFields[i].target)
 				) {
-					console.log("filtered id:",linksFields[i].target);
 					filteredLinks.push({
 						source: linksFields[i].source,
 						target: linksFields[i].target,
@@ -179,8 +176,6 @@ const d3Tableau = () => {
 		//Zoom
 		var g = svg.append("g").attr("class", "everything");
 		
-		//var link = svg.append("g").selectAll(".link"),
-			//node = svg.append("g").selectAll(".node");
 		//ForceSimulation
 		var simulation = d3
 			.forceSimulation()
@@ -223,12 +218,7 @@ const d3Tableau = () => {
 			const graph = d3_data;
 			//const graph = await d3.json("./VOC_ALL_Links_No_Null.json");
 			console.log("graph", graph);
-			
-			//	UPDATE
-				//link = link.data(graph.links, function(d) { return d.ID;});
-			//	EXIT
-				//link.exit().remove();
-			//	ENTER
+			//	ENTER + UPDATE
 			var link = g
 				.append("g")
 				.attr("class", "links")
@@ -236,14 +226,8 @@ const d3Tableau = () => {
 				.data(graph.links)
 				.enter()
 				.append("line");
+			
 			//	ENTER + UPDATE
-				//link = link.merge(newlink);
-
-			//	UPDATE
-			//node = node.data(graph.nodes, function(d) {return d.ID;});
-			//	EXIT
-			//node.exit().remove();
-			//	ENTER
 			var node = g
 				.append("g")
 				.attr("class", "nodes")
@@ -262,17 +246,12 @@ const d3Tableau = () => {
 						.on("drag", dragged)
 						.on("end", dragended)
 				);
-				
-			//	ENTER + UPDATE
-				//node = node.merge(newnode);
 
 			simulation
 				.nodes(graph.nodes)
 				.on("tick", ticked)
 				.force("link")
 				.links(graph.links);
-
-				//simulation.alpha(1).alphaTarget(0).restart();
 
 			function ticked() {
 				node.attr("cx", function (d) {
@@ -339,11 +318,6 @@ const d3Tableau = () => {
 		}
 
 		function identifiedDate(node) {
-			//var months = {JAN:0,FEB:1,MAR:2,APR:3,MAY:4,JUN:5,JUL:6,AUG:7,SEP:8,OCT:9,NOV:10,DEC:11};
-			//var dd = datetext.slice(2,4);
-			//var mmm = datetext.slice(4,7);
-			//var yyyy = datetext.slice(7,11);
-			//return new Date(yyyy, months[mmm], dd);
 			if(node.Dateofdiagnosis !== '%null%')
 				{
 					return "Identified Date: " + node.Dateofdiagnosis;
@@ -395,7 +369,6 @@ const d3Tableau = () => {
 		}
 
 		function handleMouseOver(node) {
-			//var datevalue = node.Dateofdiagnosis.toDateString();
 			var htmlContent = "<div>";
 			htmlContent += "ID: " + node.ID + "<br>";
 			htmlContent += findName(node) + "<br>";
